@@ -1,4 +1,4 @@
-package domain;
+package guru.springframework.spring5webapp.domain;
 
 import java.util.Objects;
 import java.util.Set;
