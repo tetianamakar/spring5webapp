@@ -1,5 +1,6 @@
 package guru.springframework.spring5webapp.domain;
 
+import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
@@ -17,19 +18,18 @@ public class Book {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String title;
-    private String lastName;
+    private String isbn;
     @ManyToMany
     @JoinTable(name = "author_book", joinColumns =  @JoinColumn(name = "book_id"),
             inverseJoinColumns = @JoinColumn(name = "author_id"))
-    private Set<Author> authors;
+    private Set<Author> authors = new HashSet<>();
 
     public Book() {
     }
 
-    public Book(String title, String lastName, Set<Author> authors) {
+    public Book(String title, String isbn) {
         this.title = title;
-        this.lastName = lastName;
-        this.authors = authors;
+        this.isbn = isbn;
     }
 
     @Override
@@ -37,7 +37,7 @@ public class Book {
         return "Book{" +
                 "id=" + id +
                 ", title='" + title + '\'' +
-                ", lastName='" + lastName + '\'' +
+                ", lastName='" + isbn + '\'' +
                 ", authors=" + authors +
                 '}';
     }
